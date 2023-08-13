@@ -1,0 +1,99 @@
+//_colors.scss
+@use "../../styles/variables/colors";
+//_spacing.scss
+@use "../../styles/variables/spacing";
+//border-radius.scss
+@use "../../styles/variables/border-radius";
+//mixins.scss
+@use "../../styles/mixins.scss";
+@use "sass:math";
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.choose-mark-box {
+  background-color: colors.$gray-box-background;
+  padding: spacing.$padding-large;
+  margin: spacing.$margin-large + 10;
+  border-radius: border-radius.$border-radius-default;
+  width: 100%;
+  @include mixins.default-box-shadow(colors.$dark-shadow-color);
+  .choose-mark-box__title {
+    color: colors.$gray-300-text-color;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .choose-mark-box__buttons-box {
+    margin: spacing.$margin-large 0;
+    background-color: colors.$background-color;
+    padding: spacing.$padding-small;
+    display: flex;
+    align-items: center;
+    border-radius: border-radius.$border-radius-default;
+
+    button {
+      flex: 1;
+      transition: 0.5s ease-in-out;
+      background-color: transparent;
+      border: none;
+      padding: spacing.$padding-small;
+      border-radius: border-radius.$border-radius-default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      img {
+        width: 35px;
+        z-index: 1;
+      }
+      overflow: hidden;
+    }
+    button.mark_choosed {
+      background-color: colors.$gray-300;
+    }
+  }
+  .choose-mark-box__reminder {
+    color: colors.$gray-600-text-color;
+    text-align: center;
+    font-weight: 500;
+    font-size: 15px;
+  }
+}
+
+.actions-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap:spacing.$margin-medium;
+  width: 100%+10;
+  button {
+    border:none;
+    color: colors.$primary-text-color;
+    font-size:20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    padding:spacing.$padding-medium;
+    border-radius: border-radius.$border-radius-default;
+    padding: spacing.$padding-large 0;
+    cursor: pointer;
+  }
+  #button-vs-cpu {
+    background-color:colors.$orange-color;
+    @include mixins.default-box-shadow(colors.$orange-shadow-color);
+
+  }
+  #button-vs-player {
+    background-color:colors.$blue-color;
+    @include mixins.default-box-shadow(colors.$blue-shadow-color);
+
+  }
+}
