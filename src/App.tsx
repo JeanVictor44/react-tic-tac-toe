@@ -1,9 +1,9 @@
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/router";
+import './locales/i18n'
+
 function App() {
-  return (
-    <>
-      <h1>APP</h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
