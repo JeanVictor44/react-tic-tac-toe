@@ -1,3 +1,10 @@
+// colors.scss
+@use 'variables/colors';
+@use 'mixins';
+
+body {
+  background-color: colors.$background-color;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
