@@ -18,6 +18,22 @@
   max-width: 450px;
   margin: 0 auto;
 }
+@media (max-width: 600px) {
+  .home-container {
+    max-width: 400px;
+  }
+}
+@media (max-width: 500px) {
+  .home-container {
+    max-width: 350px;
+  }
+}
+@media (max-width: 400px) {
+  .home-container {
+    max-width: 300px;
+  }
+}
+
 
 .choose-mark-box {
   background-color: colors.$gray-box-background;
@@ -32,7 +48,22 @@
     font-weight: 600;
     letter-spacing: 1px;
   }
+
   .choose-mark-box__buttons-box {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 9px;
+      bottom: 9px;
+      width: calc(50% - 8px);
+      background-color: colors.$gray-300;
+      border-radius: 10px;
+      z-index: 1;
+      transition: transform 0.3s ease-in-out;
+      will-change: transform;
+    }
+
     margin: spacing.$margin-large 0;
     background-color: colors.$background-color;
     padding: spacing.$padding-small;
@@ -52,48 +83,64 @@
       align-items: center;
       position: relative;
       cursor: pointer;
+      z-index: 2;
+      overflow: hidden;
       img {
         width: 35px;
-        z-index: 1;
       }
-      overflow: hidden;
-    }
-    button.mark_choosed {
-      background-color: colors.$gray-300;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
     }
   }
   .choose-mark-box__reminder {
     color: colors.$gray-600-text-color;
     text-align: center;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
   }
+}
+.O:after {
+  transform: translate3d(100%, 0, 0);
 }
 
 .actions-buttons-container {
   display: flex;
   flex-direction: column;
-  gap:spacing.$margin-medium;
+  gap: spacing.$margin-medium;
   width: 100%+10;
   button {
-    border:none;
+    border: none;
     color: colors.$primary-text-color;
-    font-size:20px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.3px;
-    padding:spacing.$padding-medium;
+    padding: spacing.$padding-medium;
     border-radius: border-radius.$border-radius-default;
     padding: spacing.$padding-large 0;
     cursor: pointer;
+    transition: all 0.1s ease-out;
+  }
+  button:hover {
+    filter: brightness(1.1);
   }
   #button-vs-cpu {
-    background-color:colors.$orange-color;
+    background-color: colors.$orange-color;
     @include mixins.default-box-shadow(colors.$orange-shadow-color);
-
   }
-  #button-vs-player {
-    background-color:colors.$blue-color;
-    @include mixins.default-box-shadow(colors.$blue-shadow-color);
+  #button-vs-cpu:active {
+    transform: translateY(4px) scaleY(0.93);
+    box-shadow: inset 0px -4px 0px colors.$orange-shadow-color;
+  }
 
+  #button-vs-player {
+    background-color: colors.$blue-color;
+    @include mixins.default-box-shadow(colors.$blue-shadow-color);
+  }
+
+  #button-vs-player:active {
+    transform: translateY(4px) scaleY(0.93);
+    box-shadow: inset 0px -4px 0px colors.$blue-shadow-color;
   }
 }
