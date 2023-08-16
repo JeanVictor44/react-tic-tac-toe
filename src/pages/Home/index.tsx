@@ -7,6 +7,7 @@ import xGray from "../../assets/icons/icon-x-grey.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Marks } from "../../enums/marks";
+import { MyButton } from "../../components/MyButton";
 
 export const HomePage = () => {
   const { t } = useTranslation();
@@ -28,21 +29,20 @@ export const HomePage = () => {
 
       <div className="choose-mark-box">
         <p className="choose-mark-box__title">{t("Pick player mark")}</p>
-        <div className="choose-mark-box__buttons-box">
+        <div className={`choose-mark-box__buttons-box ${markPlayerOne}`}>
           <button onClick={toggleToX} id="button-x" className={`${markPlayerOne === Marks.x && 'mark_choosed'}`}>
             <img src={markPlayerOne === Marks.x ? xBlack : xGray} />
           </button>
           <button onClick={toggleToO} id="button-o" className={`${markPlayerOne === Marks.o && 'mark_choosed'}`}>
             <img src={markPlayerOne === Marks.o ? oBlack : oGray} />
           </button>
-          <div className="button-background"></div>
         </div>
         <p className="choose-mark-box__reminder">{t("X first")}</p>
       </div>
 
       <div className="actions-buttons-container" >
-        <button id="button-vs-cpu">{t("New game cpu")}</button>
-        <button id="button-vs-player">{t("New game player")}</button>
+        <MyButton id="button-vs-cpu" label={t("New game cpu")}/>
+        <MyButton id="button-vs-player" label={t("New game player")}/>
       </div>
     </div>
   );
